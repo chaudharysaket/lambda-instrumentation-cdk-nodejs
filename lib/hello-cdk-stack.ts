@@ -1,16 +1,22 @@
 import * as cdk from 'aws-cdk-lib';
 import { Construct } from 'constructs';
-// import * as sqs from 'aws-cdk-lib/aws-sqs';
+import * as lambda from 'aws-cdk-lib/aws-lambda';
 
-export class HelloCdkStack extends cdk.Stack {
+export class NewRelicExampleCdkStack extends cdk.Stack {
   constructor(scope: Construct, id: string, props?: cdk.StackProps) {
     super(scope, id, props);
-
-    // The code that defines your stack goes here
-
-    // example resource
-    // const queue = new sqs.Queue(this, 'HelloCdkQueue', {
-    //   visibilityTimeout: cdk.Duration.seconds(300)
-    // });
+    // Add latest New Relic Lambda layer ARN from https://layers.newrelic-external.com
+    const NewReliclayerArn = 'arn:aws:lambda:us-east-1:451483290750:layer:NewRelicNodeJS20X:39';
+    const myFunction = new lambda.Function(this, "NewRelicExampleLambda", {
+      runtime: lambda.Runtime.NODEJS_20_X, 
+      // Update functions handler to point to the New Relic Lambda wrapper
+      handler: "newrelic-lambda-wrapper.handler",
+      code: lambda.Code.fromAsset('lib/lambda-runtime-code'),
+      layers: [lambda.LayerVersion.fromLayerVersionArn(this, 'NewRelicLayer', NewReliclayerArn)],
+      environment: {
+        // Set the NEW_RELIC_LAMBDA_HANDLER environment variable to the path of your initial handler.
+        NEW_RELIC_LAMBDA_HANDLER: 'index.handler',
+      },
+    });
   }
 }
