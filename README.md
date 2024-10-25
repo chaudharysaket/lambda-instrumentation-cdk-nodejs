@@ -1,6 +1,10 @@
-# Welcome to your CDK TypeScript project
+# CDK TypeScript project to test Nodejs Lambda
 
-This is a blank project for CDK development with TypeScript.
+This project was created using the [aws documentation for CDK](https://docs.aws.amazon.com/cdk/v2/guide/hello_world.html)
+
+Steps followed:
+* `cdk init app --language typescript` to create blank template
+* `cdk bootstrap` to bootstrap environment
 
 The `cdk.json` file tells the CDK Toolkit how to execute your app.
 
