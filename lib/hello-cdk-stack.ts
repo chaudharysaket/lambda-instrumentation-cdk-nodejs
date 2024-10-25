@@ -11,7 +11,7 @@ export class NewRelicExampleCdkStack extends cdk.Stack {
       runtime: lambda.Runtime.NODEJS_20_X, 
       // Update functions handler to point to the New Relic Lambda wrapper
       handler: "newrelic-lambda-wrapper.handler",
-      code: lambda.Code.fromAsset('lib/newrelic-lambda-code'),
+      code: lambda.Code.fromAsset('lib/lambda-runtime-code'),
       layers: [lambda.LayerVersion.fromLayerVersionArn(this, 'NewRelicLayer', NewReliclayerArn)],
       environment: {
         // Set the NEW_RELIC_LAMBDA_HANDLER environment variable to the path of your initial handler.
