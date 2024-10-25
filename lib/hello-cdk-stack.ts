@@ -16,6 +16,7 @@ export class NewRelicExampleCdkStack extends cdk.Stack {
       environment: {
         // Set the NEW_RELIC_LAMBDA_HANDLER environment variable to the path of your initial handler.
         NEW_RELIC_LAMBDA_HANDLER: 'index.handler',
+        NEW_RELIC_USE_ESM: 'true',
       },
     });
   }
