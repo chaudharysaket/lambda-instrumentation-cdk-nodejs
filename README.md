@@ -8,6 +8,10 @@ Steps followed:
 
 The `cdk.json` file tells the CDK Toolkit how to execute your app.
 
+## Dev Imports
+`npm install esbuild`
+`npm install --save-dev @types/newrelic`
+
 ## Useful commands
 * `cdk bootstrap`   cdk bootstrap 
 * `npm run build`   compile typescript to js

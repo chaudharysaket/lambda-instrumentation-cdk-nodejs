@@ -3,6 +3,10 @@
 *.d.ts
 node_modules
 
+# Ignore build js files
+lib/lambda-runtime-code/index.mjs
+lib/lambda-runtime-code/index.d.mts
+
 # CDK asset staging directory
 .cdk.staging
 cdk.out

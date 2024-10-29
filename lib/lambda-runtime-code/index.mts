@@ -1,8 +1,8 @@
-import newrelic from 'newrelic';
+import * as newrelic from 'newrelic';
 
 console.log("Lambda Handler starting up");
 
-export const handler = async (event, context) => {
+export const handler = async (event: any, context: any) => {
     newrelic.recordCustomEvent("MyNodeEvent", {
         "zip": "zap"
     });
